@@ -1,0 +1,25 @@
+apiVersion: cache.example.com/v1alpha1
+kind: Wordpress
+metadata:
+  labels:
+    app.kubernetes.io/name: wordpress
+    app.kubernetes.io/instance: wordpress-sample
+    app.kubernetes.io/part-of: wordpress
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: wordpress
+  name: wordpress-sample
+spec:
+  # TODO(user): Add fields here
+  image: wordpress:latest
+  replicas: 2
+  configData:
+    WORDPRESS_DB_HOST: mysql
+    WORDPRESS_DB_NAME: wordpress
+  dbUsername: root
+  dbPassword: password
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  
+
+
